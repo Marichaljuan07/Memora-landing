@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Memora — CRM Visual para WhatsApp e Instagram</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Rounded" rel="stylesheet">
+
+<style>
+
+:root {
+    --blue: #004F87;
+    --blue-dark: #00365d;
+    --light: #F7F9FB;
+    --white: #ffffff;
+    --green: #18a957;
+    --orange: #ff8a00;
+    --text: #1f2937;
+    --gray: #6b7280;
+    --border: #e5e7eb;
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body {
+    font-family:'Inter', sans-serif;
+    color:var(--text);
+    background:var(--white);
+    line-height:1.6;
+}
+
+.container {
+    width:min(1120px, 90%);
+    margin:auto;
+}
+
+section {
+    padding:80px 0;
+}
+
+
+/* HEADER */
+
+header {
+    padding:25px 0;
+    background:white;
+}
+
+.logo {
+    font-size:26px;
+    font-weight:800;
+    color:var(--blue);
+}
+
+
+/* HERO */
+
+.hero {
+    background:linear-gradient(180deg,#ffffff,#f7f9fb);
+    text-align:center;
+    padding-top:60px;
+}
+
+.hero h1 {
+    font-size:clamp(2.2rem,5vw,3.8rem);
+    line-height:1.1;
+    font-weight:800;
+    color:var(--blue);
+    max-width:850px;
+    margin:auto;
+}
+
+.hero p {
+    max-width:760px;
+    margin:25px auto;
+    font-size:1.15rem;
+    color:var(--gray);
+}
+
+.btn {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    background:var(--green);
+    color:white;
+    padding:18px 32px;
+    border-radius:12px;
+    font-weight:700;
+    text-decoration:none;
+    transition:.3s;
+    box-shadow:0 10px 25px rgba(24,169,87,.25);
+}
+
+.btn:hover {
+    transform:translateY(-3px);
+    background:#128443;
+}
+
+.hero small {
+    display:block;
+    margin-top:15px;
+    color:var(--gray);
+}
+
+
+/* TITULOS */
+
+.section-title {
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2 {
+    font-size:2.2rem;
+    color:var(--blue);
+}
+
+.section-title p {
+    color:var(--gray);
+}
+
+
+/* CARDS */
+
+.grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card {
+    background:white;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+    transition:.3s;
+}
+
+.card:hover {
+    transform:translateY(-5px);
+}
+
+.icon {
+    font-size:40px;
+    color:var(--blue);
+    margin-bottom:15px;
+}
+
+.card h3 {
+    margin-bottom:12px;
+    color:var(--blue);
+}
+
+
+/* PROBLEMA */
+
+.problem {
+    background:var(--light);
+}
+
+.quote {
+    margin-top:40px;
+    background:white;
+    border-left:5px solid var(--orange);
+    padding:25px;
+    border-radius:12px;
+    font-size:1.2rem;
+    font-weight:600;
+}
+
+
+/* FEATURES */
+
+.features {
+    grid-template-columns:repeat(4,1fr);
+}
+
+
+/* STEPS */
+
+.steps {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.step-number {
+    width:45px;
+    height:45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--blue);
+    color:white;
+    border-radius:50%;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+
+/* PRICING */
+
+.price-box {
+    max-width:600px;
+    margin:auto;
+    background:white;
+    border-radius:12px;
+    padding:45px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,.1);
+    border:2px solid var(--blue);
+}
+
+.price-box h2 {
+    color:var(--blue);
+}
+
+.price {
+    font-size:4rem;
+    font-weight:800;
+    color:var(--blue);
+    margin:20px;
+}
+
+.price-box ul {
+    text-align:left;
+    margin:25px 0;
+}
+
+.price-box li {
+    margin:12px 0;
+    list-style:none;
+}
+
+.price-box li::before {
+    content:"✓";
+    color:var(--green);
+    font-weight:bold;
+    margin-right:10px;
+}
+
+
+/* FOOTER */
+
+footer {
+    background:var(--blue);
+    color:white;
+    text-align:center;
+    padding:35px;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.grid,
+.features,
+.steps {
+    grid-template-columns:1fr;
+}
+
+.hero h1 {
+    font-size:2.3rem;
+}
+
+section {
+    padding:55px 0;
+}
+
+.price {
+    font-size:3rem;
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+<div class="container">
+<div class="logo">MEMORA</div>
+</div>
+</header>
+
+
+<section class="hero">
+
+<div class="container">
+
+<h1>
+Deja de perder clientes por olvidarte de responder.
+</h1>
+
+<p>
+El CRM visual ultra liviano para independientes y emprendedores que gestionan sus ventas por WhatsApp e Instagram. Organiza tus contactos en segundos y sin pagar cuotas mensuales para siempre.
+</p>
+
+
+<a href="#comprar" class="btn">
+Obtener Memora Ahora — Pago Único $19 USD
+</a>
+
+<small>
+Instalación instantánea. Sin suscripciones. Tus datos se quedan en tu Google Drive.
+</small>
+
+</div>
+
+</section>
+
+
+
+<section class="problem">
+
+<div class="container">
+
+<div class="section-title">
+<h2>¿Te suena familiar alguna de estas situaciones?</h2>
+</div>
+
+
+<div class="grid">
+
+
+<div class="card">
+<span class="material-symbols-rounded icon">chat</span>
+<h3>Clientes olvidados</h3>
+<p>
+Un cliente te pide presupuesto por WhatsApp, te surge otra cosa, te olvidás de responderle y a los 3 días te da vergüenza escribirle.
+</p>
+</div>
+
+
+<div class="card">
+<span class="material-symbols-rounded icon">table_chart</span>
+<h3>Excel abandonado</h3>
+<p>
+Tienes un Excel donde anotas tus ventas, pero te da pereza abrirlo, actualizarlo y al final no sabes en qué quedó cada consulta.
+</p>
+</div>
+
+
+<div class="card">
+<span class="material-symbols-rounded icon">payments</span>
+<h3>CRMs complicados</h3>
+<p>
+Probaste software de ventas tradicionales, pero son complejos, llenos de botones inútiles y cobran mensualidades caras en dólares.
+</p>
+</div>
+
+
+</div>
+
+
+<div class="quote">
+"Las ventas no se pierden por falta de interés, se pierden por falta de seguimiento a tiempo."
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<div class="container">
+
+<div class="section-title">
+<h2>Diseñado para ser visual, rápido e imposible de ignorar.</h2>
+</div>
+
+
+<div class="grid features">
+
+
+<div class="card">
+<span class="material-symbols-rounded icon">notifications_active</span>
+<h3>Alerta Inteligente de Inactividad</h3>
+<p>
+Define cuánto tiempo puede pasar sin hablar con un cliente. Memora los pone automáticamente al frente para saber a quién escribirle hoy.
+</p>
+</div>
+
+
+<div class="card">
+<span class="material-symbols-rounded icon">money_off</span>
+<h3>Sin Cuotas Mensuales</h3>
+<p>
+Pagas una sola vez y la herramienta es tuya. Chau suscripciones eternas.
+</p>
+</div>
+
+
+<div class="card">
+<span class="material-symbols-rounded icon">lock</span>
+<h3>Privacidad y Control Total</h3>
+<p>
+Tus datos no quedan en servidores externos. Todo se respalda en tu Google Drive personal.
+</p>
+</div>
+
+
+<div class="card">
+<span class="material-symbols-rounded icon">offline_bolt</span>
+<h3>Rápido y Offline</h3>
+<p>
+Ultra liviana, sin cargas lentas y utilizable incluso sin conexión.
+</p>
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="problem">
+
+<div class="container">
+
+<div class="section-title">
+<h2>Cómo funciona</h2>
+</div>
+
+
+<div class="steps">
+
+
+<div class="card">
+<div class="step-number">1</div>
+<h3>Añades al cliente</h3>
+<p>
+Añades nombre, canal como WhatsApp/Instagram y una nota rápida en segundos.
+</p>
+</div>
+
+
+<div class="card">
+<div class="step-number">2</div>
+<h3>Memora monitorea</h3>
+<p>
+Controla el tiempo y muestra un aviso destacado cuando necesita revisión.
+</p>
+</div>
+
+
+<div class="card">
+<div class="step-number">3</div>
+<h3>Cierra la venta</h3>
+<p>
+Retomas la conversación a tiempo y aumentas tus posibilidades de vender.
+</p>
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<section id="comprar">
+
+<div class="container">
+
+<div class="price-box">
+
+<h2>Acceso De Por Vida a Memora</h2>
+
+<div class="price">
+$19 USD
+</div>
+
+<p>
+Pago único - Sin mensualidades
+</p>
+
+
+<ul>
+<li>Acceso ilimitado a la aplicación Web/PWA</li>
+<li>Guía de instalación rápida de 2 minutos</li>
+<li>Integración con Google Drive personal</li>
+<li>Exportación de clientes a Excel (.xlsx) o PDF</li>
+<li>Actualizaciones futuras incluidas</li>
+</ul>
+
+
+<a href="#" class="btn">
+Comprar Memora y Organizar mis Ventas Hoy
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<footer>
+MEMORA © — Simplificando el seguimiento de tus ventas.
+</footer>
+
+
+</body>
+</html>
