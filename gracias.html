@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Gracias por tu apoyo! — Memora</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Rounded" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #004F87;
+      --light: #F7F9FB;
+      --white: #ffffff;
+      --green: #18a957;
+      --text: #1f2937;
+      --gray: #6b7280;
+      --border: #e5e7eb;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--light);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: var(--white);
+      max-width: 580px;
+      width: 100%;
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      border: 1px solid var(--border);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    }
+
+    .icon {
+      font-size: 64px;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 1.9rem;
+      margin-bottom: 12px;
+    }
+
+    .thanks-message {
+      color: var(--gray);
+      font-size: 1.05rem;
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
+    .code-box {
+      background: #f0fdf4;
+      border: 2px dashed var(--green);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    .code-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--green);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .code {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--blue);
+      letter-spacing: 2px;
+    }
+
+    .instructions {
+      text-align: left;
+      background: var(--light);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      font-size: 0.95rem;
+    }
+
+    .instructions h3 {
+      color: var(--blue);
+      font-size: 1rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .instructions ul {
+      padding-left: 20px;
+    }
+
+    .instructions li {
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--green);
+      color: white;
+      padding: 16px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      width: 100%;
+      font-size: 1.1rem;
+      box-shadow: 0 10px 25px rgba(24, 169, 87, 0.25);
+    }
+
+    .btn:hover {
+      background: #128443;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="material-symbols-rounded icon">check_circle</span>
+    <h1>¡Gracias por colaborar con Memora!</h1>
+    
+    <p class="thanks-message">
+      Tu pago se procesó correctamente. Gracias por apoyar este proyecto e impulsar el desarrollo de la herramienta.
+    </p>
+
+    <!-- BLOQUE DE CLAVE PAGO POST-MERCADO PAGO -->
+    <div class="code-box">
+      <div class="code-label">Tu clave de acceso de por vida al núcleo:</div>
+      <div id="user-code" class="code">Generando...</div>
+    </div>
+
+    <div class="instructions">
+      <h3>
+        <span class="material-symbols-rounded">info</span>
+        Instrucciones para empezar:
+      </h3>
+      <ul>
+        <li>Guarda o copia este código de acceso.</li>
+        <li>Haz clic en el botón de abajo para abrir la PWA.</li>
+        <li>Ingresa el código cuando la aplicación te lo solicite para activar tu licencia vitalicia del núcleo.</li>
+        <li>Recuerda que puedes instalarla en la pantalla de inicio de tu celular o PC para usarla como app nativa.</li>
+      </ul>
+    </div>
+
+    <a href="https://app-memora.netlify.app/" class="btn">
+      <span>Abrir Memora PWA</span>
+      <span class="material-symbols-rounded">arrow_forward</span>
+    </a>
+  </div>
+
+  <script>
+    // Lee el ID de pago de Mercado Pago enviado en la URL para crear la clave única
+    const urlParams = new URLSearchParams(window.location.search);
+    const paymentId = urlParams.get('payment_id') || urlParams.get('collection_id') || Math.floor(100000 + Math.random() * 900000);
+    
+    // Genera un código dinámico vinculado al cobro
+    const generatedCode = "MEM-" + paymentId;
+    document.getElementById("user-code").innerText = generatedCode;
+  </script>
+
+</body>
+</html>
