@@ -1,141 +1,124 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>¡Gracias por tu apoyo! — Memora</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Rounded" rel="stylesheet">
-  <style>
-    :root {
-      --blue: #004F87;
-      --light: #F7F9FB;
-      --white: #ffffff;
-      --green: #18a957;
-      --text: #1f2937;
-      --gray: #6b7280;
-      --border: #e5e7eb;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
-      background: var(--light);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .card {
-      background: var(--white);
-      max-width: 580px;
-      width: 100%;
-      border-radius: 20px;
-      padding: 40px 30px;
-      text-align: center;
-      border: 1px solid var(--border);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-    }
-
-    .icon {
-      font-size: 64px;
-      color: var(--green);
-      margin-bottom: 12px;
-    }
-
-    h1 {
-      color: var(--blue);
-      font-weight: 800;
-      font-size: 1.9rem;
-      margin-bottom: 12px;
-    }
-
-    .thanks-message {
-      color: var(--gray);
-      font-size: 1.05rem;
-      line-height: 1.5;
-      margin-bottom: 25px;
-    }
-
-    .instructions {
-      text-align: left;
-      background: var(--light);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 25px;
-      font-size: 0.95rem;
-    }
-
-    .instructions h3 {
-      color: var(--blue);
-      font-size: 1rem;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .instructions ul {
-      padding-left: 20px;
-    }
-
-    .instructions li {
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: var(--green);
-      color: white;
-      padding: 16px 28px;
-      border-radius: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      width: 100%;
-      font-size: 1.1rem;
-      box-shadow: 0 10px 25px rgba(24, 169, 87, 0.25);
-    }
-
-    .btn:hover {
-      background: #128443;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="card">
-    <span class="material-symbols-rounded icon">check_circle</span>
-    <h1>¡Gracias por colaborar con Memora!</h1>
-    
-    <p class="thanks-message">
-      Tu pago se procesó correctamente. Gracias por adquirir la herramienta y apoyar este proyecto.
-    </p>
-
-    <div class="instructions">
-      <h3>
-        <span class="material-symbols-rounded">info</span>
-        Instrucciones para empezar:
-      </h3>
-      <ul>
-        <li>Haz clic en el botón de abajo para ingresar directamente a la PWA.</li>
-        <li>Tu aplicación ya cuenta con todas sus funciones listas para usarse.</li>
-        <li>Puedes instalarla en la pantalla de inicio de tu celular o PC para usarla como una app nativa sin necesidad de tiendas.</li>
-      </ul>
-    </div>
-
-<a href="https://memora-pwa-sooty.vercel.app/" class="btn">
-  <span>Abrir Memora PWA</span>
-  <span class="material-symbols-rounded">arrow_forward</span>
-</a>
-
-  </div>
-
-</body>
+<!DOCTYPE html> 
+<html lang="es"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>¡Gracias por tu apoyo! · Memora</title> 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Rounded" rel="stylesheet"> 
+  <style> 
+    :root { 
+      --blue: #004F87; 
+      --light: #F7F9FB; 
+      --white: #ffffff; 
+      --green: #18a957; 
+      --text: #1f2937; 
+      --gray: #6b7280; 
+      --border: #e5e7eb; 
+    } 
+    * { margin: 0; padding: 0; box-sizing: border-box; } 
+    body { 
+      font-family: 'Inter', sans-serif; 
+      color: var(--text); 
+      background: var(--light); 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      padding: 20px; 
+    } 
+    .card { 
+      background: var(--white); 
+      max-width: 580px; 
+      width: 100%; 
+      border-radius: 20px; 
+      padding: 40px 30px; 
+      text-align: center; 
+      border: 1px solid var(--border); 
+      box-shadow: 0 15px 35px rgba(0,0,0,0.06); 
+    } 
+    .icon { 
+      font-size: 64px; 
+      color: var(--green); 
+      margin-bottom: 12px; 
+    } 
+    h1 { 
+      color: var(--blue); 
+      font-weight: 800; 
+      font-size: 1.9rem; 
+      margin-bottom: 12px; 
+    } 
+    .thanks-message { 
+      color: var(--gray); 
+      font-size: 1.05rem; 
+      line-height: 1.5; 
+      margin-bottom: 25px; 
+    } 
+    .instructions { 
+      text-align: left; 
+      background: var(--light); 
+      border-radius: 12px; 
+      padding: 20px; 
+      margin-bottom: 25px; 
+      font-size: 0.95rem; 
+    } 
+    .instructions h3 { 
+      color: var(--blue); 
+      font-size: 1rem; 
+      margin-bottom: 10px; 
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+    } 
+    .instructions ul { 
+      padding-left: 20px; 
+    } 
+    .instructions li { 
+      margin-bottom: 8px; 
+      color: var(--text); 
+    } 
+    .btn { 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 8px; 
+      background: var(--green); 
+      color: white; 
+      padding: 16px 28px; 
+      border-radius: 12px; 
+      font-weight: 700; 
+      text-decoration: none; 
+      width: 100%; 
+      font-size: 1.1rem; 
+      box-shadow: 0 10px 25px rgba(24, 169, 87, 0.25); 
+    } 
+    .btn:hover { 
+      background: #128443; 
+    } 
+  </style> 
+</head> 
+<body> 
+  <div class="card"> 
+    <span class="material-symbols-rounded icon">check_circle</span> 
+    <h1>¡Gracias por adquirir Memora!</h1> 
+         
+    <p class="thanks-message"> 
+      Tu pago se procesó correctamente. Ya tienes acceso total a tu herramienta de gestión de ventas. 
+    </p> 
+    <div class="instructions"> 
+      <h3> 
+        <span class="material-symbols-rounded">info</span> 
+        Pasos para comenzar: 
+      </h3> 
+      <ul> 
+        <li>Haz clic en el botón de abajo para ingresar a la PWA oficial.</li> 
+        <li>Inicia sesión con tu cuenta de Google para sincronizar tus datos con tu Drive personal.</li> 
+        <li>Instálala en la pantalla de inicio de tu celular o PC desde las opciones de tu navegador para usarla como app nativa.</li> 
+      </ul> 
+    </div> 
+    <a href="https://memora-pwa-sooty.vercel.app/" class="btn"> 
+      <span>Abrir Memora PWA</span> 
+      <span class="material-symbols-rounded">arrow_forward</span> 
+    </a> 
+  </div> 
+</body> 
 </html>
