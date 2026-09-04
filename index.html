@@ -1,591 +1,410 @@
-<!DOCTYPE html> 
-<html lang="es"> 
-<head>   
-  <meta charset="UTF-8">   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-  <title>Memora | CRM Visual para WhatsApp e Instagram</title>   
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Rounded" rel="stylesheet">   
-  <style>     
-    :root {       
-      --blue: #004F87;       
-      --blue-dark: #00365d;       
-      --light: #F7F9FB;       
-      --white: #ffffff;       
-      --green: #18a957;       
-      --green-dark: #128443;       
-      --orange: #ff8a00;       
-      --text: #1f2937;       
-      --gray: #6b7280;       
-      --border: #e5e7eb;     
-    }     
-    * {       
-      margin: 0;       
-      padding: 0;       
-      box-sizing: border-box;     
-    }     
-    body {       
-      font-family: 'Inter', sans-serif;       
-      color: var(--text);       
-      background: var(--white);       
-      line-height: 1.6;     
-    }     
-    .container {       
-      width: min(1120px, 92%);       
-      margin: auto;     
-    }     
-    section {       
-      padding: 70px 0;     
-    }     
-    /* HEADER */     
-    header {       
-      padding: 20px 0;       
-      background: white;       
-      border-bottom: 1px solid var(--border);     
-    }     
-    .logo {       
-      font-size: 24px;       
-      font-weight: 800;       
-      color: var(--blue);     
-    }     
-    /* HERO */     
-    .hero {       
-      background: linear-gradient(180deg, #ffffff 0%, #f7f9fb 100%);       
-      text-align: center;       
-      padding-top: 50px;     
-    }     
-    .hero h1 {       
-      font-size: clamp(2.2rem, 5vw, 3.4rem);       
-      line-height: 1.15;       
-      font-weight: 800;       
-      color: var(--blue);       
-      max-width: 850px;       
-      margin: 0 auto 15px auto;     
-    }     
-    .hero-subtitle {       
-      max-width: 760px;       
-      margin: 0 auto 30px auto;       
-      font-size: 1.15rem;       
-      color: var(--gray);     
-    }     
-    /* BLOQUE DE PRECIO Y OFERTA DESTACADA (HERO) */     
-    .hero-offer-card {       
-      background: white;       
-      border: 2px solid var(--orange);       
-      border-radius: 20px;       
-      padding: 30px 20px;       
-      max-width: 550px;       
-      margin: 0 auto 40px auto;       
-      box-shadow: 0 15px 35px rgba(255, 138, 0, 0.12);     
-    }     
-    .badge-offer {       
-      display: inline-block;       
-      background: #fff3e0;       
-      color: var(--orange);       
-      border: 1px solid var(--orange);       
-      font-weight: 700;       
-      font-size: 0.9rem;       
-      padding: 6px 16px;       
-      border-radius: 20px;       
-      margin-bottom: 15px;     
-    }     
-    .hero-price-wrapper {       
-      display: flex;       
-      align-items: center;       
-      justify-content: center;       
-      gap: 15px;       
-      margin: 10px 0;     
-    }     
-    .old-price-hero {       
-      text-decoration: line-through;       
-      color: var(--gray);       
-      font-size: 1.3rem;       
-      font-weight: 600;     
-    }     
-    .current-price-hero {       
-      font-size: 3rem;       
-      font-weight: 800;       
-      color: var(--blue);       
-      line-height: 1;     
-    }     
-    .lifetime-tag {       
-      display: inline-block;       
-      background: #e6f4ea;       
-      color: var(--green);       
-      font-size: 0.85rem;       
-      font-weight: 700;       
-      padding: 4px 12px;       
-      border-radius: 6px;       
-      margin-top: 5px;     
-    }     
-    .spots-counter {       
-      color: #d97706;       
-      font-size: 0.95rem;       
-      font-weight: 700;       
-      margin-top: 12px;       
-      display: flex;       
-      align-items: center;       
-      justify-content: center;       
-      gap: 6px;     
-    }     
-    .btn {       
-      display: inline-flex;       
-      align-items: center;       
-      justify-content: center;       
-      gap: 8px;       
-      background: var(--green);       
-      color: white;       
-      padding: 18px 32px;       
-      border-radius: 12px;       
-      font-weight: 700;       
-      text-decoration: none;       
-      transition: all .3s ease;       
-      box-shadow: 0 10px 25px rgba(24, 169, 87, 0.28);       
-      font-size: 1.15rem;       
-      width: 100%;       
-      margin-top: 15px;     
-    }     
-    .btn:hover {       
-      transform: translateY(-3px);       
-      background: var(--green-dark);       
-      box-shadow: 0 14px 28px rgba(24, 169, 87, 0.35);     
-    }     
-    .hero small {       
-      display: block;       
-      margin-top: 12px;       
-      color: var(--gray);       
-      font-size: 0.85rem;     
-    }     
-    /* CARRUSEL MEJORADO Y PROFESIONAL */     
-    .carousel-section {       
-      max-width: 900px;       
-      margin: 40px auto 0 auto;       
-      position: relative;     
-    }     
-    .carousel-wrapper {       
-      position: relative;       
-      overflow: hidden;       
-      border-radius: 20px;       
-      background: #ffffff;       
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);       
-      border: 1px solid var(--border);     
-    }     
-    .carousel-track {       
-      display: flex;       
-      transition: transform 0.4s ease-in-out;       
-      width: 100%;     
-    }     
-    .carousel-slide {       
-      min-width: 100%;       
-      padding: 25px 20px 20px 20px;       
-      text-align: center;       
-      display: flex;       
-      flex-direction: column;       
-      align-items: center;       
-      justify-content: center;     
-    }     
-    .carousel-slide img {       
-      width: 100%;       
-      max-width: 780px;       
-      max-height: 520px;       
-      object-fit: contain;       
-      border-radius: 12px;       
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);       
-      border: 1px solid var(--border);     
-    }     
-    .slide-caption {       
-      font-size: 1rem;       
-      font-weight: 700;       
-      color: var(--blue);       
-      margin-top: 15px;     
-    }     
-    /* Controles de Navegación */     
-    .carousel-nav-btn {       
-      position: absolute;       
-      top: 50%;       
-      transform: translateY(-50%);       
-      background: white;       
-      border: 1px solid var(--border);       
-      color: var(--blue);       
-      width: 44px;       
-      height: 44px;       
-      border-radius: 50%;       
-      cursor: pointer;       
-      display: flex;       
-      align-items: center;       
-      justify-content: center;       
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12);       
-      transition: all 0.2s ease;       
-      z-index: 10;     
-    }     
-    .carousel-nav-btn:hover {       
-      background: var(--blue);       
-      color: white;     
-    }     
-    .carousel-nav-btn.prev {       
-      left: 10px;     
-    }     
-    .carousel-nav-btn.next {       
-      right: 10px;     
-    }     
-    .carousel-dots {       
-      display: flex;       
-      justify-content: center;       
-      gap: 8px;       
-      margin-top: 15px;     
-    }     
-    .dot {       
-      width: 10px;       
-      height: 10px;       
-      background: #cbd5e1;       
-      border-radius: 50%;       
-      cursor: pointer;       
-      transition: all 0.3s ease;     
-    }     
-    .dot.active {       
-      background: var(--blue);       
-      width: 26px;       
-      border-radius: 10px;     
-    }     
-    .swipe-hint {       
-      font-size: 0.85rem;       
-      color: var(--gray);       
-      margin-top: 10px;     
-    }     
-    /* TITULOS GENERALES */     
-    .section-title {       
-      text-align: center;       
-      margin-bottom: 40px;     
-    }     
-    .section-title h2 {       
-      font-size: 2.2rem;       
-      color: var(--blue);     
-    }     
-    /* CARDS & GRIDS */     
-    .grid {       
-      display: grid;       
-      grid-template-columns: repeat(3, 1fr);       
-      gap: 25px;     
-    }     
-    .card {       
-      background: white;       
-      border: 1px solid var(--border);       
-      border-radius: 12px;       
-      padding: 30px;       
-      box-shadow: 0 10px 30px rgba(0,0,0,.05);     
-    }     
-    .icon {       
-      font-size: 40px;       
-      color: var(--blue);       
-      margin-bottom: 15px;     
-    }     
-    .card h3 {       
-      margin-bottom: 12px;       
-      color: var(--blue);     
-    }     
-    /* PROBLEMA */     
-    .problem {       
-      background: var(--light);     
-    }     
-    .quote {       
-      margin-top: 40px;       
-      background: white;       
-      border-left: 5px solid var(--orange);       
-      padding: 25px;       
-      border-radius: 12px;       
-      font-size: 1.2rem;       
-      font-weight: 600;     
-    }     
-    /* FEATURES */     
-    .features {       
-      grid-template-columns: repeat(4, 1fr);     
-    }     
-    /* PRICING */     
-    .price-box {       
-      max-width: 600px;       
-      margin: auto;       
-      background: white;       
-      border-radius: 16px;       
-      padding: 45px;       
-      text-align: center;       
-      box-shadow: 0 20px 50px rgba(0,0,0,.1);       
-      border: 2px solid var(--blue);       
-      position: relative;     
-    }     
-    .price-box h2 {       
-      color: var(--blue);     
-    }     
-    .price {       
-      font-size: 3.5rem;       
-      font-weight: 800;       
-      color: var(--blue);       
-      margin: 15px 0 5px 0;     
-    }     
-    .old-price {       
-      text-decoration: line-through;       
-      color: var(--gray);       
-      font-size: 1.2rem;       
-      font-weight: 600;     
-    }     
-    .price-box ul {       
-      text-align: left;       
-      margin: 25px 0;     
-    }     
-    .price-box li {       
-      margin: 12px 0;       
-      list-style: none;     
-    }     
-    .price-box li::before {       
-      content: "✓ ";       
-      color: var(--green);       
-      font-weight: bold;       
-      margin-right: 10px;     
-    }     
-    /* FOOTER */     
-    footer {       
-      background: var(--blue);       
-      color: white;       
-      text-align: center;       
-      padding: 30px;     
-    }     
-    /* RESPONSIVE */     
-    @media(max-width: 900px) {       
-      .grid, .features {         
-        grid-template-columns: 1fr;       
-      }       
-      .hero h1 {         
-        font-size: 2.1rem;       
-      }       
-      section {         
-        padding: 45px 0;       
-      }       
-      .price {         
-        font-size: 2.8rem;       
-      }       
-      .carousel-nav-btn {         
-        display: none;       
-      }       
-      .carousel-slide img {         
-        max-height: 380px;       
-      }     
-    }   
-  </style> 
-</head> 
-<body>   
-  <header>     
-    <div class="container">       
-      <div class="logo">MEMORA</div>     
-    </div>   
-  </header>   
-  <section class="hero">     
-    <div class="container">       
-      <h1>Deja de perder clientes por olvidarte de responder.</h1>       
-      <p class="hero-subtitle">         
-        El CRM visual ultra liviano para emprendedores que gestionan sus ventas por WhatsApp e Instagram. Organiza tus contactos en segundos y sin pagar cuotas mensuales para siempre.       
-      </p>       
-      <!-- TARJETA DESTACADA DE OFERTA EN EL HERO -->       
-      <div class="hero-offer-card">         
-        <span class="badge-offer">Oferta Especial de Lanzamiento</span>                  
-        <div class="hero-price-wrapper">           
-          <span class="old-price-hero">$2.400 UYU</span>           
-          <span class="current-price-hero">$1.200 UYU</span>         
-        </div>         
-        <span class="lifetime-tag">Pago único · De por vida</span>         
+<!DOCTYPE html>  
+<html lang="es">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Memora | CRM Visual para WhatsApp e Instagram</title>  
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Rounded" rel="stylesheet">  
+    <style>  
+        :root {  
+            --blue: #004F87;  
+            --blue-dark: #00365d;  
+            --light: #F7F9FB;  
+            --white: #ffffff;  
+            --green: #18a957;  
+            --green-dark: #128443;  
+            --orange: #ff8a00;  
+            --text: #1f2937;  
+            --gray: #6b7280;  
+            --border: #e5e7eb;  
+        }  
+        * { margin: 0; padding: 0; box-sizing: border-box; }  
+        body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }  
+        .container { width: min(1120px, 92%); margin: auto; }  
+        section { padding: 70px 0; }  
         
-        <!-- ELEMENTO PARA EL CONTADOR REGRESIVO -->
-        <div class="spots-counter">           
-          <span class="material-symbols-rounded">schedule</span>           
-          <span>La oferta termina en: <strong id="countdown-timer">Cargando...</strong></span>         
-        </div>         
+        /* HEADER */  
+        header { padding: 20px 0; background: white; border-bottom: 1px solid var(--border); }  
+        .logo { font-size: 24px; font-weight: 800; color: var(--blue); }  
 
-        <!-- ENLACE DIRECTO DE COMPRA DE LICENCIA -->
-        <a href="https://mpago.la/17mjw9p" class="btn">           
-          <span>Comprar Memora ($1.200 UYU)</span>           
-          <span class="material-symbols-rounded">arrow_forward</span>         
-        </a>         
-        <small>Instalación instantánea. Sin suscripciones. Tus datos se quedan en tu Google Drive personal.</small>       
-      </div>       
+        /* HERO */  
+        .hero { background: linear-gradient(180deg, #ffffff 0%, #f7f9fb 100%); text-align: center; padding-top: 50px; }  
+        .hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.15; font-weight: 800; color: var(--blue); max-width: 850px; margin: 0 auto 15px auto; }  
+        .hero-subtitle { max-width: 760px; margin: 0 auto 30px auto; font-size: 1.15rem; color: var(--gray); }  
 
-      <!-- CARRUSEL DE CAPTURAS MEJORADO -->       
-      <div class="carousel-section">         
-        <div class="carousel-wrapper">           
-          <button class="carousel-nav-btn prev" onclick="moveSlide(-1)">             
-            <span class="material-symbols-rounded">chevron_left</span>           
-          </button>           
-          <button class="carousel-nav-btn next" onclick="moveSlide(1)">             
-            <span class="material-symbols-rounded">chevron_right</span>           
-          </button>           
-          <div class="carousel-track" id="carouselTrack">             
-            <div class="carousel-slide">               
-              <img src="demo-registros.png" alt="Panel de Registros y Clientes en Memora">               
-              <p class="slide-caption">Vista organizada de clientes e historiales de comunicación</p>             
-            </div>             
-            <div class="carousel-slide">               
-              <img src="demo-inicio.png" alt="Seguimiento Inteligente y Métricas Memora">               
-              <p class="slide-caption">Alerta automática por inactividad de contactos</p>             
-            </div>             
-            <div class="carousel-slide">               
-              <img src="demo-perfil.png" alt="Respaldo en Google Drive y Diagnóstico">               
-              <p class="slide-caption">Respaldo privado en tu Google Drive personal y exportación a Excel</p>             
-            </div>           
-          </div>         
-        </div>         
-        <div class="carousel-dots">           
-          <span class="dot active" onclick="setSlide(0)"></span>           
-          <span class="dot" onclick="setSlide(1)"></span>           
-          <span class="dot" onclick="setSlide(2)"></span>         
-        </div>         
-        <p class="swipe-hint">Desliza o usa las flechas para explorar la interfaz real de la app</p>       
-      </div>     
-    </div>   
-  </section>   
+        /* OFERTA HERO */  
+        .hero-offer-card { background: white; border: 2px solid var(--orange); border-radius: 20px; padding: 30px 20px; max-width: 550px; margin: 0 auto 40px auto; box-shadow: 0 15px 35px rgba(255, 138, 0, 0.12); }  
+        .badge-offer { display: inline-block; background: #fff3e0; color: var(--orange); border: 1px solid var(--orange); font-weight: 700; font-size: 0.9rem; padding: 6px 16px; border-radius: 20px; margin-bottom: 15px; }  
+        .hero-price-wrapper { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 10px 0; }  
+        .old-price-hero { text-decoration: line-through; color: var(--gray); font-size: 1.3rem; font-weight: 600; }  
+        .current-price-hero { font-size: 3rem; font-weight: 800; color: var(--blue); line-height: 1; }  
+        .lifetime-tag { display: inline-block; background: #e6f4ea; color: var(--green); font-size: 0.85rem; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-top: 5px; }  
+        .spots-counter { color: #d97706; font-size: 0.95rem; font-weight: 700; margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 6px; }  
 
-  <section class="problem">     
-    <div class="container">       
-      <div class="section-title">         
-        <h2>¿Te suena familiar alguna de estas situaciones?</h2>       
-      </div>       
-      <div class="grid">         
-        <div class="card">           
-          <span class="material-symbols-rounded icon">chat</span>           
-          <h3>Clientes olvidados en el fondo</h3>           
-          <p>Un cliente te pide presupuesto por WhatsApp, se acumulan nuevos mensajes, te olvidas de responderle y a los 3 días se fue con la competencia.</p>         
-        </div>         
-        <div class="card">           
-          <span class="material-symbols-rounded icon">table_chart</span>           
-          <h3>Excel abandonado</h3>           
-          <p>Intentaste anotar tus ventas en planillas, pero da pereza abrirlas, actualizar los estados y terminan quedando obsoletas a la semana.</p>         
-        </div>         
-        <div class="card">           
-          <span class="material-symbols-rounded icon">payments</span>           
-          <h3>CRMs caros en dólares</h3>           
-          <p>Los programas tradicionales de ventas son complejos, llenos de botones inútiles y te cobran suscripciones mensuales en dólares eternas.</p>         
-        </div>       
-      </div>       
-      <div class="quote">         
-        "Las ventas no se pierden por falta de interés del cliente, se pierden por falta de seguimiento a tiempo."       
-      </div>     
-    </div>   
-  </section>   
+        .btn-group { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--green); color: white; padding: 16px 24px; border-radius: 12px; font-weight: 700; text-decoration: none; transition: all .3s ease; box-shadow: 0 10px 25px rgba(24, 169, 87, 0.28); font-size: 1.05rem; flex: 1; min-width: 220px; cursor: pointer; border: none; }  
+        .btn:hover { transform: translateY(-3px); background: var(--green-dark); box-shadow: 0 14px 28px rgba(24, 169, 87, 0.35); }  
+        .btn-secondary { background: white; color: var(--blue); border: 2px solid var(--blue); box-shadow: none; }
+        .btn-secondary:hover { background: var(--light); color: var(--blue-dark); }
 
-  <section>     
-    <div class="container">       
-      <div class="section-title">         
-        <h2>Diseñado para ser visual, rápido e imposible de ignorar.</h2>       
-      </div>       
-      <div class="grid features">         
-        <div class="card">           
-          <span class="material-symbols-rounded icon">notifications_active</span>           
-          <h3>Alerta Inteligente</h3>           
-          <p>Define cuántos días pueden pasar sin hablar con un cliente. Memora los resalta automáticamente para saber a quién escribirle hoy.</p>         
-        </div>         
-        <div class="card">           
-          <span class="material-symbols-rounded icon">money_off</span>           
-          <h3>Sin Cuotas Mensuales</h3>           
-          <p>Pagas una sola vez $1.200 UYU y la herramienta es tuya para siempre. Chau suscripciones.</p>         
-        </div>         
-        <div class="card">           
-          <span class="material-symbols-rounded icon">lock</span>           
-          <h3>Privacidad y Control Total</h3>           
-          <p>Tus clientes no quedan en servidores externos de terceros. Todo se respalda directo en tu Google Drive personal.</p>         
-        </div>         
-        <div class="card">           
-          <span class="material-symbols-rounded icon">offline_bolt</span>           
-          <h3>Rápido y Funciona Offline</h3>           
-          <p>Aplicación Web/PWA ultra liviana. Se instala en tu celular o PC y abre al instante sin cargas lentas.</p>         
-        </div>       
-      </div>     
-    </div>   
-  </section>   
+        .hero small { display: block; margin-top: 14px; color: var(--gray); font-size: 0.85rem; }  
 
-  <section id="comprar">     
-    <div class="container">       
-      <div class="price-box">         
-        <div class="badge-offer">Lanzamiento Promocional</div>         
-        <h2>Acceso De Por Vida a Memora</h2>         
-        <div class="old-price">$2.400 UYU</div>         
-        <div class="price">$1.200 UYU</div>         
-        <p><strong>Pago único</strong> · Sin mensualidades ni cobros ocultos</p>         
-        <ul>           
-          <li>Acceso ilimitado de por vida a la aplicación Web / PWA</li>           
-          <li>Instalación rápida en celular Android, iPhone o PC</li>           
-          <li>Integración con Google Drive personal</li>           
-          <li>Exportación de clientes a Excel (.xlsx) o PDF</li>           
-          <li>Actualizaciones y mejoras futuras totalmente incluidas</li>         
-        </ul>         
-        <a href="https://mpago.la/1dZgarH" class="btn">           
-          <span>Aprovechar Oferta · Comprar ($1.200 UYU)</span>         
-        </a>       
-      </div>     
-    </div>   
-  </section>   
+        /* CARRUSEL */  
+        .carousel-section { max-width: 900px; margin: 40px auto 0 auto; position: relative; }  
+        .carousel-wrapper { position: relative; overflow: hidden; border-radius: 20px; background: #ffffff; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); border: 1px solid var(--border); }  
+        .carousel-track { display: flex; transition: transform 0.4s ease-in-out; width: 100%; }  
+        .carousel-slide { min-width: 100%; padding: 25px 20px 20px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }  
+        .carousel-slide img { width: 100%; max-width: 780px; max-height: 520px; object-fit: contain; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); border: 1px solid var(--border); }  
+        .slide-caption { font-size: 1rem; font-weight: 700; color: var(--blue); margin-top: 15px; }  
+        .carousel-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: white; border: 1px solid var(--border); color: var(--blue); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.12); transition: all 0.2s ease; z-index: 10; }  
+        .carousel-nav-btn:hover { background: var(--blue); color: white; }  
+        .carousel-nav-btn.prev { left: 10px; }  
+        .carousel-nav-btn.next { right: 10px; }  
+        .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 15px; }  
+        .dot { width: 10px; height: 10px; background: #cbd5e1; border-radius: 50%; cursor: pointer; transition: all 0.3s ease; }  
+        .dot.active { background: var(--blue); width: 26px; border-radius: 10px; }  
+        .swipe-hint { font-size: 0.85rem; color: var(--gray); margin-top: 10px; }  
 
-  <footer>     
-    MEMORA · Simplificando el seguimiento de tus ventas.   
-  </footer>   
+        /* CARDS & GRIDS */  
+        .section-title { text-align: center; margin-bottom: 40px; }  
+        .section-title h2 { font-size: 2.2rem; color: var(--blue); }  
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }  
+        .card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,.05); }  
+        .icon { font-size: 40px; color: var(--blue); margin-bottom: 15px; }  
+        .card h3 { margin-bottom: 12px; color: var(--blue); }  
+        .problem { background: var(--light); }  
+        .quote { margin-top: 40px; background: white; border-left: 5px solid var(--orange); padding: 25px; border-radius: 12px; font-size: 1.2rem; font-weight: 600; }  
+        .features { grid-template-columns: repeat(4, 1fr); }  
 
-  <script>
-    // LÓGICA CONTADOR REGRESIVO DE FECHA LÍMITE
-    const TARGET_DATE = new Date("2026-09-14T23:59:59").getTime();
+        /* PRICING */  
+        .price-box { max-width: 600px; margin: auto; background: white; border-radius: 16px; padding: 45px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,.1); border: 2px solid var(--blue); position: relative; }  
+        .price-box h2 { color: var(--blue); }  
+        .price { font-size: 3.5rem; font-weight: 800; color: var(--blue); margin: 15px 0 5px 0; }  
+        .old-price { text-decoration: line-through; color: var(--gray); font-size: 1.2rem; font-weight: 600; }  
+        .price-box ul { text-align: left; margin: 25px 0; }  
+        .price-box li { margin: 12px 0; list-style: none; }  
+        .price-box li::before { content: "✓ "; color: var(--green); font-weight: bold; margin-right: 10px; }  
 
-    function updateTimer() {
-      const now = new Date().getTime();
-      const difference = TARGET_DATE - now;
-      const timerElement = document.getElementById("countdown-timer");
+        /* FOOTER */  
+        footer { background: var(--blue); color: white; text-align: center; padding: 30px; }  
 
-      if (!timerElement) return;
-      if (difference <= 0) {
-        timerElement.innerHTML = "¡Oferta finalizada!";
-        return;
-      }
+        @media(max-width: 900px) {  
+            .grid, .features { grid-template-columns: 1fr; }  
+            .hero h1 { font-size: 2.1rem; }  
+            section { padding: 45px 0; }  
+            .price { font-size: 2.8rem; }  
+            .carousel-nav-btn { display: none; }  
+            .carousel-slide img { max-height: 380px; }  
+        }  
+    </style>  
+</head>  
+<body>  
+    <header>  
+        <div class="container">  
+            <div class="logo">MEMORA</div>  
+        </div>  
+    </header>  
 
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = String(Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-      const minutes = String(Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-      const seconds = String(Math.floor((difference % (1000 * 60)) / 1000)).padStart(2, '0');
+    <section class="hero">  
+        <div class="container">  
+            <h1>Deja de perder clientes por olvidarte de responder.</h1>  
+            <p class="hero-subtitle">  
+                El CRM visual ultra liviano para emprendedores que gestionan sus ventas por WhatsApp e Instagram. Organiza tus contactos en segundos y sin pagar cuotas mensuales para siempre.  
+            </p>  
 
-      timerElement.innerText = `${days > 0 ? days + 'd ' : ''}${hours}h ${minutes}m ${seconds}s`;
-    }
+            <div class="hero-offer-card">  
+                <span class="badge-offer">Promo Especial Mes de Septiembre</span>           
+                <div class="hero-price-wrapper">  
+                    <span class="old-price-hero">$2.400 UYU</span>  
+                    <span class="current-price-hero">$1.200 UYU</span>  
+                </div>  
+                <span class="lifetime-tag">Pago Único · De por vida</span>           
+                
+                <div class="spots-counter">  
+                    <span class="material-symbols-rounded">schedule</span>  
+                    <span>La promo de Septiembre vence en: <strong id="countdown-timer">Cargando...</strong></span>  
+                </div>  
 
-    updateTimer();
-    setInterval(updateTimer, 1000);
+                <div class="btn-group">
+                    <a href="https://memora-pwa-sooty.vercel.app/?demo=true" target="_blank" class="btn btn-secondary">  
+                        <span class="material-symbols-rounded">play_circle</span>  
+                        <span>Probar Demo Interactiva</span>  
+                    </a>  
+                    <button type="button" id="btnSolicitarHero" class="btn">  
+                        <span>Solicitar Licencia ($1.200 UYU)</span>  
+                        <span class="material-symbols-rounded">arrow_forward</span>  
+                    </button>  
+                </div>
+                <small>Instalación instantánea. Sin suscripciones. Tus datos se quedan en tu Google Drive personal.</small>  
+            </div>  
 
-    // LÓGICA CARRUSEL
-    let currentSlide = 0;
-    const track = document.getElementById('carouselTrack');
-    const dots = document.querySelectorAll('.dot');
-    const totalSlides = 3;
+            <!-- CARRUSEL -->  
+            <div class="carousel-section">  
+                <div class="carousel-wrapper">  
+                    <button type="button" class="carousel-nav-btn prev" onclick="moveSlide(-1)">  
+                        <span class="material-symbols-rounded">chevron_left</span>  
+                    </button>  
+                    <button type="button" class="carousel-nav-btn next" onclick="moveSlide(1)">  
+                        <span class="material-symbols-rounded">chevron_right</span>  
+                    </button>  
+                    <div class="carousel-track" id="carouselTrack">  
+                        <div class="carousel-slide">  
+                            <img src="demo-registros.png" alt="Panel de Registros y Clientes en Memora">  
+                            <p class="slide-caption">Vista organizada de clientes e historiales de comunicación</p>  
+                        </div>  
+                        <div class="carousel-slide">  
+                            <img src="demo-inicio.png" alt="Seguimiento Inteligente y Métricas Memora">  
+                            <p class="slide-caption">Alerta automática por inactividad de contactos</p>  
+                        </div>  
+                        <div class="carousel-slide">  
+                            <img src="demo-perfil.png" alt="Respaldo en Google Drive y Diagnóstico">  
+                            <p class="slide-caption">Respaldo privado en tu Google Drive personal y exportación a Excel</p>  
+                        </div>  
+                    </div>  
+                </div>  
+                <div class="carousel-dots">  
+                    <span class="dot active" onclick="setSlide(0)"></span>  
+                    <span class="dot" onclick="setSlide(1)"></span>  
+                    <span class="dot" onclick="setSlide(2)"></span>  
+                </div>  
+                <p class="swipe-hint">Desliza o usa las flechas para explorar la interfaz real de la app</p>  
+            </div>  
+        </div>  
+    </section>  
 
-    function updateCarousel() {
-      if (!track) return;
-      track.style.transform = `translateX(-${currentSlide * 100}%)`;
-      dots.forEach((dot, index) => dot.classList.toggle('active', index === currentSlide));
-    }
+    <section class="problem">  
+        <div class="container">  
+            <div class="section-title">  
+                <h2>¿Te suena familiar alguna de estas situaciones?</h2>  
+            </div>  
+            <div class="grid">  
+                <div class="card">  
+                    <span class="material-symbols-rounded icon">chat</span>  
+                    <h3>Clientes olvidados en el fondo</h3>  
+                    <p>Un cliente te pide presupuesto por WhatsApp, se acumulan nuevos mensajes, te olvidas de responderle y a los 3 días se fue con la competencia.</p>  
+                </div>  
+                <div class="card">  
+                    <span class="material-symbols-rounded icon">table_chart</span>  
+                    <h3>Excel abandonado</h3>  
+                    <p>Intentaste anotar tus ventas en planillas, pero da pereza abrirlas, actualizar los estados y terminan quedando obsoletas a la semana.</p>  
+                </div>  
+                <div class="card">  
+                    <span class="material-symbols-rounded icon">payments</span>  
+                    <h3>CRMs caros en dólares</h3>  
+                    <p>Los programas tradicionales de ventas son complejos, llenos de botones inútiles y te cobran suscripciones mensuales en dólares eternas.</p>  
+                </div>  
+            </div>  
+            <div class="quote">  
+                "Las ventas no se pierden por falta de interés del cliente, se pierden por falta de seguimiento a tiempo."  
+            </div>  
+        </div>  
+    </section>  
 
-    function moveSlide(dir) {
-      currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
-      updateCarousel();
-    }
+    <section>  
+        <div class="container">  
+            <div class="section-title">  
+                <h2>Diseñado para ser visual, rápido e imposible de ignorar.</h2>  
+            </div>  
+            <div class="grid features">  
+                <div class="card">  
+                    <span class="material-symbols-rounded icon">notifications_active</span>  
+                    <h3>Alerta Inteligente</h3>  
+                    <p>Define cuántos días pueden pasar sin hablar con un cliente. Memora los resalta automáticamente para saber a quién escribirle hoy.</p>  
+                </div>  
+                <div class="card">  
+                    <span class="material-symbols-rounded icon">money_off</span>  
+                    <h3>Sin Cuotas Mensuales</h3>  
+                    <p>Pagas una sola vez $1.200 UYU y la herramienta es tuya para siempre. Chau suscripciones.</p>  
+                </div>  
+                <div class="card">  
+                    <span class="material-symbols-rounded icon">lock</span>  
+                    <h3>Privacidad y Control Total</h3>  
+                    <p>Tus clientes no quedan en servidores externos de terceros. Todo se respalda directo en tu Google Drive personal.</p>  
+                </div>  
+                <div class="card">  
+                    <span class="material-symbols-rounded icon">offline_bolt</span>  
+                    <h3>Rápido y Funciona Offline</h3>  
+                    <p>Aplicación Web/PWA ultra liviana. Se instala en tu celular o PC y abre al instante sin cargas lentas.</p>  
+                </div>  
+            </div>  
+        </div>  
+    </section>  
 
-    function setSlide(index) {
-      currentSlide = index;
-      updateCarousel();
-    }
+    <section id="comprar">  
+        <div class="container">  
+            <div class="price-box">  
+                <div class="badge-offer">Lanzamiento Promocional Septiembre</div>  
+                <h2>Acceso De Por Vida a Memora</h2>  
+                <div class="old-price">$2.400 UYU</div>  
+                <div class="price">$1.200 UYU</div>  
+                <p><strong>Pago Único</strong> · Sin mensualidades ni cobros ocultos</p>  
+                <ul>  
+                    <li>Acceso ilimitado de por vida a la aplicación Web / PWA</li>  
+                    <li>Instalación rápida en celular Android, iPhone o PC</li>  
+                    <li>Integración con Google Drive personal</li>  
+                    <li>Exportación de clientes a Excel (.xlsx) o PDF</li>  
+                    <li>Actualizaciones y mejoras futuras totalmente incluidas</li>  
+                </ul>  
+                <button type="button" id="btnSolicitarPrecio" class="btn" style="width: 100%;">  
+                    <span>Aprovechar Oferta · Comprar ($1.200 UYU)</span>  
+                </button>  
+                <div style="margin-top: 15px;">
+                    <a href="https://memora-pwa-sooty.vercel.app/?demo=true" target="_blank" style="color: var(--gray); text-decoration: underline; font-size: 0.9rem;">
+                        ¿Querés probar la demo interactiva en vivo? Toca aquí
+                    </a>
+                </div>
+            </div>  
+        </div>  
+    </section>  
 
-    // Soporte para gestos táctiles (Swipe)
-    let touchStartX = 0;
-    let touchEndX = 0;
-    const carouselWrapper = document.querySelector('.carousel-wrapper');
-    if (carouselWrapper) {
-      carouselWrapper.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-      }, false);
-      carouselWrapper.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        if (touchEndX < touchStartX - 40) moveSlide(1);
-        if (touchEndX > touchStartX + 40) moveSlide(-1);
-      }, false);
-    }
-  </script>
+    <footer>  
+        MEMORA · Simplificando el seguimiento de tus ventas.  
+    </footer>  
 
-</body>
+    <!-- MODAL DE CAPTACIÓN DE LEAD ANTES DE MERCADO PAGO -->
+    <div id="modalRegistro" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; padding: 20px;">
+        <div style="background: white; border-radius: 20px; max-width: 480px; width: 100%; padding: 30px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.2); position: relative;">
+            
+            <button type="button" onclick="cerrarModal()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--gray);">&times;</button>
+            
+            <h3 style="color: var(--blue); font-size: 1.4rem; margin-bottom: 8px;">Activar Licencia de Memora</h3>
+            <p style="color: var(--gray); font-size: 0.9rem; margin-bottom: 20px;">Completa tus datos para asociar la licencia a tu negocio antes de pasar al pago seguro.</p>  
+            
+            <form id="formCheckout" onsubmit="procesarCaptacionYPago(event)">
+                <div style="text-align: left; margin-bottom: 14px;">
+                    <label style="font-size: 0.85rem; font-weight: 600; color: var(--text);">Tu Nombre (*)</label>
+                    <input type="text" id="leadNombre" required placeholder="Ej: Juan González" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); margin-top: 4px;">
+                </div>
+                <div style="text-align: left; margin-bottom: 14px;">
+                    <label style="font-size: 0.85rem; font-weight: 600; color: var(--text);">Nombre de tu Negocio / Rubro</label>
+                    <input type="text" id="leadEmpresa" placeholder="Ej: Indumentaria MVR" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); margin-top: 4px;">
+                </div>
+                <div style="text-align: left; margin-bottom: 20px;">
+                    <label style="font-size: 0.85rem; font-weight: 600; color: var(--text);">WhatsApp o Email de Contacto (*)</label>
+                    <input type="text" id="leadContacto" required placeholder="Ej: 099 123 456 o juan@email.com" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); margin-top: 4px;">
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%;">
+                    <span>Continuar a Mercado Pago ($1.200 UYU)</span>
+                    <span class="material-symbols-rounded">arrow_forward</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>  
+        // VINCULACIÓN DIRECTA DE EVENTOS EN EL DOM
+        document.addEventListener("DOMContentLoaded", function() {
+            const modal = document.getElementById('modalRegistro');
+            const btnHero = document.getElementById('btnSolicitarHero');
+            const btnPrecio = document.getElementById('btnSolicitarPrecio');
+
+            function mostrarModal(e) {
+                if (e) e.preventDefault();
+                if (modal) modal.style.display = 'flex';
+            }
+
+            if (btnHero) btnHero.addEventListener('click', mostrarModal);
+            if (btnPrecio) btnPrecio.addEventListener('click', mostrarModal);
+        });
+
+        function cerrarModal() {
+            const modal = document.getElementById('modalRegistro');
+            if (modal) modal.style.display = 'none';
+        }
+
+        function procesarCaptacionYPago(e) {
+    e.preventDefault();
+    
+    const nombre = document.getElementById('leadNombre').value;
+    const empresa = document.getElementById('leadEmpresa').value;
+    const contacto = document.getElementById('leadContacto').value;
+
+    const payload = {
+        nombre: nombre,
+        empresa: empresa,
+        contacto: contacto
+    };
+
+    // Cambiamos el texto del botón mientras envía los datos
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.innerText = "Procesando...";
+
+    // Envío directo a Formspree
+    fetch("https://formspree.io/f/mkjnzkby", {
+        method: "POST",
+        headers: { 
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(payload)
+    }).then(() => {
+        // Redirección inmediata a Mercado Pago tras guardar el lead
+        window.location.href = "https://mpago.la/17mjw9p";
+    }).catch((error) => {
+        console.error("Error al enviar a Formspree:", error);
+        // Si hay algún fallo de red, lo manda igual a pagar para no perder la venta
+        window.location.href = "https://mpago.la/17mjw9p";
+    });
+}
+
+
+        // CONTADOR REGRESIVO SEPTIEMBRE DE 2026
+        const TARGET_DATE = new Date("2026-09-30T23:59:59").getTime(); 
+
+        function updateTimer() {  
+            const now = new Date().getTime();  
+            const difference = TARGET_DATE - now;  
+            const timerElement = document.getElementById("countdown-timer");  
+            if (!timerElement) return;  
+
+            if (difference <= 0) {
+                timerElement.innerHTML = "¡Promoción finalizada!";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = String(Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');  
+            const minutes = String(Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');  
+            const seconds = String(Math.floor((difference % (1000 * 60)) / 1000)).padStart(2, '0');  
+            
+            timerElement.innerText = `${days > 0 ? days + 'd ' : ''}${hours}h ${minutes}m ${seconds}s`;  
+        }  
+        updateTimer();  
+        setInterval(updateTimer, 1000);  
+
+        // LÓGICA CARRUSEL  
+        let currentSlide = 0;  
+        const track = document.getElementById('carouselTrack');  
+        const dots = document.querySelectorAll('.dot');  
+        const totalSlides = 3;  
+
+        function updateCarousel() {  
+            if (!track) return;  
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;  
+            dots.forEach((dot, index) => dot.classList.toggle('active', index === currentSlide));  
+        }  
+        function moveSlide(dir) {  
+            currentSlide = (currentSlide + dir + totalSlides) % totalSlides;  
+            updateCarousel();  
+        }  
+        function setSlide(index) {  
+            currentSlide = index;  
+            updateCarousel();  
+        }  
+
+        // Gestos táctiles  
+        let touchStartX = 0;  
+        let touchEndX = 0;  
+        const carouselWrapper = document.querySelector('.carousel-wrapper');  
+        if (carouselWrapper) {  
+            carouselWrapper.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, false);  
+            carouselWrapper.addEventListener('touchend', e => {  
+                touchEndX = e.changedTouches[0].screenX;  
+                if (touchEndX < touchStartX - 40) moveSlide(1);  
+                if (touchEndX > touchStartX + 40) moveSlide(-1);  
+            }, false);  
+        }  
+    </script>  
+</body>  
 </html>
