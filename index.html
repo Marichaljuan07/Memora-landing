@@ -3,7 +3,7 @@
 <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Memora | Sistema de Seguimiento de Clientes</title>  
+    <title>Memora | Seguimiento simple de clientes</title>  
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Rounded" rel="stylesheet">  
     <style>  
         :root {  
@@ -108,18 +108,18 @@
 
     <section class="hero">  
         <div class="container">  
-            <h1>Dejá de perder clientes por falta de seguimiento.</h1>  
+            <h1>No pierdas clientes por conversaciones que quedan olvidadas.</h1>  
             <p class="hero-subtitle">  
                 El sistema de seguimiento ultra liviano para emprendedores que venden por WhatsApp e Instagram. Organiza tus respuestas y no dejes morir ninguna venta.  
             </p>  
 
             <div class="hero-offer-card">  
-                <span class="badge-offer">Licencia Oficial Memora</span>           
+                <span class="badge-offer">Acceso a Memora · Versión actual</span>           
                 <div class="hero-price-wrapper">  
                     <span class="old-price-hero">$2.400 UYU</span>  
                     <span class="current-price-hero">$1.200 UYU</span>  
                 </div>  
-                <span class="lifetime-tag">Pago Único · Sin Mensualidades</span>           
+                <span class="lifetime-tag">Pago único · Sin mensualidades</span>           
 
                 <div class="btn-group">
                     <a href="https://memora-pwa-sooty.vercel.app/?demo=true" target="_blank" class="btn btn-secondary">  
@@ -127,11 +127,11 @@
                         <span>Probar Demo</span>  
                     </a>  
                     <button type="button" id="btnSolicitarHero" class="btn">  
-                        <span>Comprar Licencia $1.200 UYU</span>  
+                        <span>Obtener acceso a Memora</span>  
                         <span class="material-symbols-rounded">arrow_forward</span>  
                     </button>  
                 </div>
-                <small>Sin suscripciones eternas. Tus datos se guardan en tu Google Drive personal.</small>  
+                <small>Sin mensualidades. Tus datos se guardan en tu Google Drive personal.</small>  
             </div>  
 
             <!-- 2. MOSTRAR EL PRODUCTO (CAPTURAS REALES) -->  
@@ -258,7 +258,7 @@
         <div class="container">  
             <div class="price-box">  
                 <div class="badge-offer">Acceso Inmediato</div>  
-                <h2>Licencia De Por Vida</h2>  
+                <h2>Acceso a Memora · Versión actual</h2>  
                 <div class="old-price">$2.400 UYU</div>  
                 <div class="price">$1.200 UYU</div>  
                 <p><strong>Pago Único</strong> · Sin cuotas mensuales</p>  
@@ -267,10 +267,10 @@
                     <li>Instalación directa en celular o PC</li>  
                     <li>Conexión con tu Google Drive personal</li>  
                     <li>Exportación de clientes a Excel o PDF</li>  
-                    <li>Actualizaciones futuras incluidas</li>  
+                    <li>Mejoras y correcciones durante la evolución de Memora</li>  
                 </ul>  
                 <button type="button" id="btnSolicitarPrecio" class="btn" style="width: 100%;">  
-                    <span>Instalá Memora hoy y recuperá tus ventas</span>  
+                    <span>Empezar a usar Memora</span>  
                 </button>  
                 <div style="margin-top: 15px;">
                     <a href="https://memora-pwa-sooty.vercel.app/?demo=true" target="_blank" style="color: var(--gray); text-decoration: underline; font-size: 0.9rem;">
@@ -280,19 +280,14 @@
             </div>  
         </div>  
     </section>  
-
-    <footer>  
-        MEMORA · Sistema de seguimiento de clientes para emprendedores  
-    </footer>  
-
     <!-- MODAL DE CAPTACIÓN -->
     <div id="modalRegistro" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; padding: 20px;">
         <div style="background: white; border-radius: 20px; max-width: 480px; width: 100%; padding: 30px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.2); position: relative;">
             
             <button type="button" onclick="cerrarModal()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--gray);">&times;</button>
             
-            <h3 style="color: var(--blue); font-size: 1.4rem; margin-bottom: 8px;">Activar Licencia de Memora</h3>
-            <p style="color: var(--gray); font-size: 0.9rem; margin-bottom: 20px;">Ingresá tus datos para continuar al pago seguro de $1.200 UYU.</p>  
+            <h3 style="color: var(--blue); font-size: 1.4rem; margin-bottom: 8px;">Solicitar acceso a Memora</h3>
+            <p style="color: var(--gray); font-size: 0.9rem; margin-bottom: 20px;">Ingresá tus datos para comenzar el proceso de acceso a Memora.</p>  
             
             <form id="formCheckout" onsubmit="procesarCaptacionYPago(event)">
                 <div style="text-align: left; margin-bottom: 14px;">
@@ -387,5 +382,33 @@
             updateCarousel();  
         }  
     </script>  
+
+<section style="padding:60px 0;background:#f7f9fb;">
+  <div class="container" style="text-align:center;">
+    <h2 style="color:#004F87;">Buscamos primeros usuarios de Memora</h2>
+    <p style="max-width:700px;margin:15px auto;color:#6b7280;">
+      Estamos mejorando Memora con personas que gestionan clientes día a día.
+      Probalo y contanos qué mejorarías.
+    </p>
+  </div>
+</section>
+<footer>
+    <div style="max-width:800px;margin:auto;">
+        <strong style="font-size:1.1rem;">MEMORA</strong>
+        <p style="margin-top:8px;">
+            Sistema de seguimiento de clientes para emprendedores.
+        </p>
+        
+        <p style="margin-top:15px;opacity:0.85;">
+            Creado y desarrollado de forma independiente.<br>
+            Una herramienta nacida para resolver un problema real:
+            organizar clientes, conversaciones y seguimientos sin depender de la memoria.
+        </p>
+        
+        <p style="margin-top:20px;font-size:0.85rem;opacity:0.7;">
+            © 2026 Memora. Todos los derechos reservados.
+        </p>
+    </div>
+</footer>
 </body>  
 </html>
